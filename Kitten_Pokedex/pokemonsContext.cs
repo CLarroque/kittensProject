@@ -18,9 +18,10 @@ namespace Kitten_Pokedex
         }
 
         public virtual DbSet<Item> Items { get; set; }
-        public virtual DbSet<Move> Moves { get; set; }
         public virtual DbSet<Pokedex> Pokedices { get; set; }
+        public virtual DbSet<PokemonsUser> PokemonsUsers { get; set; }
         public virtual DbSet<Type> Types { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -59,67 +60,12 @@ namespace Kitten_Pokedex
                     .HasColumnName("namejapanese");
             });
 
-            modelBuilder.Entity<Move>(entity =>
-            {
-                entity.ToTable("moves");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
-
-                entity.Property(e => e.Accuracy)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("accuracy");
-
-                entity.Property(e => e.Category)
-                    .IsRequired()
-                    .HasMaxLength(2)
-                    .HasColumnName("category");
-
-                entity.Property(e => e.Cname)
-                    .HasMaxLength(6)
-                    .HasColumnName("cname");
-
-                entity.Property(e => e.Ename)
-                    .IsRequired()
-                    .HasMaxLength(16)
-                    .HasColumnName("ename");
-
-                entity.Property(e => e.Jname)
-                    .IsRequired()
-                    .HasMaxLength(8)
-                    .HasColumnName("jname");
-
-                entity.Property(e => e.MaxPp)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("max_pp");
-
-                entity.Property(e => e.Power)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("power");
-
-                entity.Property(e => e.Pp)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("pp");
-
-                entity.Property(e => e.Tm)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("tm");
-
-                entity.Property(e => e.Type)
-                    .IsRequired()
-                    .HasMaxLength(8)
-                    .HasColumnName("type");
-            });
-
             modelBuilder.Entity<Pokedex>(entity =>
             {
                 entity.ToTable("pokedex");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
                     .HasColumnName("id");
 
                 entity.Property(e => e.BaseAttack)
@@ -175,21 +121,70 @@ namespace Kitten_Pokedex
                     .HasColumnName("type1");
             });
 
+            modelBuilder.Entity<PokemonsUser>(entity =>
+            {
+                entity.ToTable("pokemonsUser");
+
+                entity.HasIndex(e => e.IdItem, "idItem");
+
+                entity.HasIndex(e => e.IdPokemon, "idPokemon");
+
+                entity.HasIndex(e => e.IdUser, "idUser");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .ValueGeneratedNever()
+                    .HasColumnName("id");
+
+                entity.Property(e => e.IdItem)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("idItem");
+
+                entity.Property(e => e.IdPokemon)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("idPokemon");
+
+                entity.Property(e => e.IdUser)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("idUser");
+
+                entity.Property(e => e.Slot)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("slot");
+
+                entity.HasOne(d => d.IdItemNavigation)
+                    .WithMany(p => p.PokemonsUsers)
+                    .HasForeignKey(d => d.IdItem)
+                    .HasConstraintName("pokemonsUser_ibfk_3");
+
+                entity.HasOne(d => d.IdPokemonNavigation)
+                    .WithMany(p => p.PokemonsUsers)
+                    .HasForeignKey(d => d.IdPokemon)
+                    .HasConstraintName("pokemonsUser_ibfk_2");
+
+                entity.HasOne(d => d.IdUserNavigation)
+                    .WithMany(p => p.PokemonsUsers)
+                    .HasForeignKey(d => d.IdUser)
+                    .HasConstraintName("pokemonsUser_ibfk_1");
+            });
+
             modelBuilder.Entity<Type>(entity =>
             {
-                entity.HasKey(e => e.English)
-                    .HasName("PRIMARY");
-
                 entity.ToTable("types");
 
-                entity.Property(e => e.English)
-                    .HasMaxLength(8)
-                    .HasColumnName("english");
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id");
 
                 entity.Property(e => e.Chinese)
                     .IsRequired()
                     .HasMaxLength(2)
                     .HasColumnName("chinese");
+
+                entity.Property(e => e.English)
+                    .IsRequired()
+                    .HasMaxLength(8)
+                    .HasColumnName("english");
 
                 entity.Property(e => e.French)
                     .IsRequired()
@@ -200,6 +195,33 @@ namespace Kitten_Pokedex
                     .IsRequired()
                     .HasMaxLength(5)
                     .HasColumnName("japanese");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("users");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(255)")
+                    .HasColumnName("id");
+
+                entity.Property(e => e.Death)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("death");
+
+                entity.Property(e => e.Killed)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("killed");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnName("password");
             });
 
             OnModelCreatingPartial(modelBuilder);

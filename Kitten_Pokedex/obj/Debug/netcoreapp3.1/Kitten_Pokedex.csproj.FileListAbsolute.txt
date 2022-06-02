@@ -169,17 +169,3 @@ C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\bin\Debug\netcore
 C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\bin\Debug\netcoreapp3.1\Kitten_Pokedex.Views.dll
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\bin\Debug\netcoreapp3.1\Kitten_Pokedex.Views.pdb
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.RazorAssemblyInfo.cache
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.RazorAssemblyInfo.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.TagHelpers.input.cache
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.TagHelpers.output.cache
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.RazorCoreGenerate.cache
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Pokedexes\Create.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Pokedexes\Delete.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Pokedexes\Details.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Pokedexes\Edit.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Pokedexes\Index.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.RazorTargetAssemblyInfo.cs
-C:\Users\mmirra\Documents\GitHub\kittensProject\Kitten_Pokedex\obj\Debug\netcoreapp3.1\Kitten_Pokedex.Views.pdb

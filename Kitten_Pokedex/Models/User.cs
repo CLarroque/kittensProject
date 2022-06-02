@@ -5,17 +5,18 @@ using System.Collections.Generic;
 
 namespace Kitten_Pokedex
 {
-    public partial class Item
+    public partial class User
     {
-        public Item()
+        public User()
         {
             PokemonsUsers = new HashSet<PokemonsUser>();
         }
 
         public int Id { get; set; }
-        public string Nameenglish { get; set; }
-        public string Namejapanese { get; set; }
-        public string Namechinese { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public int Killed { get; set; }
+        public int Death { get; set; }
 
         public virtual ICollection<PokemonsUser> PokemonsUsers { get; set; }
     }

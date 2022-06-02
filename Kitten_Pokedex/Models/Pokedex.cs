@@ -7,6 +7,11 @@ namespace Kitten_Pokedex
 {
     public partial class Pokedex
     {
+        public Pokedex()
+        {
+            PokemonsUsers = new HashSet<PokemonsUser>();
+        }
+
         public int Id { get; set; }
         public string Nameenglish { get; set; }
         public string Namejapanese { get; set; }
@@ -20,5 +25,7 @@ namespace Kitten_Pokedex
         public int BaseSpAttack { get; set; }
         public int BaseSpDefense { get; set; }
         public int BaseSpeed { get; set; }
+
+        public virtual ICollection<PokemonsUser> PokemonsUsers { get; set; }
     }
 }

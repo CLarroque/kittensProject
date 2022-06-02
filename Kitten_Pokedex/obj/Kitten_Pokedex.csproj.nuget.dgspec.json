@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\projet\\kittensProject\\Back\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
+    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\projet\\kittensProject\\Back\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
+    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\projet\\kittensProject\\Back\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "projectUniqueName": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
         "projectName": "Kitten_Pokedex",
-        "projectPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\projet\\kittensProject\\Back\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
-        "packagesPath": "C:\\Users\\abourrel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\projet\\kittensProject\\Back\\Kitten_Pokedex\\obj\\",
+        "projectPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "packagesPath": "C:\\Users\\mmirra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\abourrel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mmirra\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,13 +40,41 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.25, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.25, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.22, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.1.9, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             }
           },
           "imports": [

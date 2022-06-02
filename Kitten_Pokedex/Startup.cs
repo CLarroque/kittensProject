@@ -1,4 +1,3 @@
-using Kitten_Pokedex.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kitten_Pokedex
 {
@@ -27,6 +27,15 @@ namespace Kitten_Pokedex
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "Server=51.77.156.169;User=wpuser;Password=motdepasse;Database=pokemons";
+
+            var serverVersion = new MariaDbServerVersion(new Version(10, 1, 45));
+
+            services.AddDbContext<pokemonsContext>(
+                DbContextOptions => DbContextOptions
+                    .UseMySql(connectionString, serverVersion));
+
+
             services.AddControllers();
         }
 
@@ -35,6 +44,10 @@ namespace Kitten_Pokedex
         {
             if (env.IsDevelopment())
             {
+              
+
+                
+                
                 app.UseDeveloperExceptionPage();
             }
 

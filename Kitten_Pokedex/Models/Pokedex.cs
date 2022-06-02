@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MySqlConnector;
+
+#nullable disable
 
 namespace Kitten_Pokedex
 {
-    public class Pokedex
+    public partial class Pokedex
     {
-        public long id { get; set; }
-        public string nameenglish { get; set; }
-        public string namejapanese { get; set; }
-        public string namefrench { get; set; }
-        public string type0 { get; set; }
-        public string type1 { get; set; }
-        public long baseHP { get; set; }
-        public long baseAttack { get; set; }
-        public long baseDefense { get; set; }
-        public long baseSp_Attack { get; set; }
-        public long baseSp_Defense { get; set; }
-        public long baseSpeed { get; set; }
-
+        public int Id { get; set; }
+        public string Nameenglish { get; set; }
+        public string Namejapanese { get; set; }
+        public string Namechinese { get; set; }
+        public string Namefrench { get; set; }
+        public string Type0 { get; set; }
+        public string Type1 { get; set; }
+        public int BaseHp { get; set; }
+        public int BaseAttack { get; set; }
+        public int BaseDefense { get; set; }
+        public int BaseSpAttack { get; set; }
+        public int BaseSpDefense { get; set; }
+        public int BaseSpeed { get; set; }
     }
 }

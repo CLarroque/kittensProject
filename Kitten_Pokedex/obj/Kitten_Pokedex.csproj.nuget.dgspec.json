@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
+    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
+    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "projectUniqueName": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
         "projectName": "Kitten_Pokedex",
-        "projectPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
-        "packagesPath": "C:\\Users\\abourrel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\obj\\",
+        "projectPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "packagesPath": "C:\\Users\\mmirra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\abourrel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mmirra\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

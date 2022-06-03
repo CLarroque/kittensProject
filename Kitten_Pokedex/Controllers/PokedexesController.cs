@@ -31,7 +31,13 @@ namespace Kitten_Pokedex.Controllers
                           {
                               name = p.Namefrench,
                               type0 = t.French,
-                              type1 = t2.French
+                              type1 = t2.French,
+                              baseHP = p.BaseHp,
+                              baseAttack = p.BaseAttack,
+                              baseDefense = p.BaseDefense,
+                              baseSp_Attack = p.BaseSpAttack,
+                              baseSp_Defense = p.BaseSpDefense,
+                              baseSpeed = p.BaseSpeed
                           };
             if (lang.Equals("english"))
             {
@@ -42,7 +48,13 @@ namespace Kitten_Pokedex.Controllers
                             {
                                 name = p.Nameenglish,
                                 type0 = t.English,
-                                type1 = t2.English
+                                type1 = t2.English,
+                                baseHP = p.BaseHp,
+                                baseAttack = p.BaseAttack,
+                                baseDefense = p.BaseDefense,
+                                baseSp_Attack = p.BaseSpAttack,
+                                baseSp_Defense = p.BaseSpDefense,
+                                baseSpeed = p.BaseSpeed
                             };
             }
             else if (lang.Equals("chinese"))
@@ -54,7 +66,13 @@ namespace Kitten_Pokedex.Controllers
                         {
                             name = p.Namechinese,
                             type0 = t.Chinese,
-                            type1 = t2.Chinese
+                            type1 = t2.Chinese,
+                            baseHP = p.BaseHp,
+                            baseAttack = p.BaseAttack,
+                            baseDefense = p.BaseDefense,
+                            baseSp_Attack = p.BaseSpAttack,
+                            baseSp_Defense = p.BaseSpDefense,
+                            baseSpeed = p.BaseSpeed
                         };
             }
             else if (lang.Equals("japanese"))
@@ -66,7 +84,13 @@ namespace Kitten_Pokedex.Controllers
                         {
                             name = p.Namejapanese,
                             type0 = t.Japanese,
-                            type1 = t2.Japanese
+                            type1 = t2.Japanese,
+                            baseHP = p.BaseHp,
+                            baseAttack = p.BaseAttack,
+                            baseDefense = p.BaseDefense,
+                            baseSp_Attack = p.BaseSpAttack,
+                            baseSp_Defense = p.BaseSpDefense,
+                            baseSpeed = p.BaseSpeed
                         };
             }
           

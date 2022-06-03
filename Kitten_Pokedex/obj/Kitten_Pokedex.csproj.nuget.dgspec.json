@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
+    "C:\\Users\\cbonafos\\source\\repos\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
+    "C:\\Users\\cbonafos\\source\\repos\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "projectUniqueName": "C:\\Users\\cbonafos\\source\\repos\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
         "projectName": "Kitten_Pokedex",
-        "projectPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
-        "packagesPath": "C:\\Users\\mmirra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mmirra\\Documents\\GitHub\\kittensProject\\Kitten_Pokedex\\obj\\",
+        "projectPath": "C:\\Users\\cbonafos\\source\\repos\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+        "packagesPath": "C:\\Users\\cbonafos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cbonafos\\source\\repos\\kittensProject\\Kitten_Pokedex\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mmirra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cbonafos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,6 +75,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.3.1, )"
             }
           },
           "imports": [
@@ -95,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

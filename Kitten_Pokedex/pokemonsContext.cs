@@ -112,12 +112,11 @@ namespace Kitten_Pokedex
                     .HasColumnName("namejapanese");
 
                 entity.Property(e => e.Type0)
-                    .IsRequired()
-                    .HasMaxLength(8)
+                    .HasColumnType("int(8)")
                     .HasColumnName("type0");
 
                 entity.Property(e => e.Type1)
-                    .HasMaxLength(8)
+                    .HasColumnType("int(8)")
                     .HasColumnName("type1");
             });
 

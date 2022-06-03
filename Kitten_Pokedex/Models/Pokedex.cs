@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -19,7 +18,7 @@ namespace Kitten_Pokedex
         public string Namechinese { get; set; }
         public string Namefrench { get; set; }
         public int Type0 { get; set; }
-        public int Type1 { get; set; }
+        public int? Type1 { get; set; }
         public int BaseHp { get; set; }
         public int BaseAttack { get; set; }
         public int BaseDefense { get; set; }

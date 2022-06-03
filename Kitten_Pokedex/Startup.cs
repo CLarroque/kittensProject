@@ -33,7 +33,7 @@ namespace Kitten_Pokedex
 
             services.AddDbContext<pokemonsContext>(
                DbContextOptions => DbContextOptions
-                   .UseMySql(connectionString, serverVersion));
+                    .UseMySql(connectionString, serverVersion));
 
 
             services.AddControllers();

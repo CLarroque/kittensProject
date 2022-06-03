@@ -22,9 +22,14 @@ namespace Kitten_Pokedex.Controllers
 
         // GET: Pokedexes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pokedex>>> GetTodoItems()
+        public IQueryable<Object> GetTodoItems()
         {
-            return await _context.Pokedices.ToListAsync();
+            return from p in _context.Pokedices
+                   join t in _context.Types on p.Type0 equals t.Id into type0Poke
+                   select new
+                   {
+                       name = p.Namefrench,
+                   };
         }
 
         // GET: Pokedexes/Details/5

@@ -21,12 +21,59 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: Pokedexes
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pokedex>>> GetTodoItems()
+        [HttpGet("language/{lang}")]
+        public async Task<Object> GetTodoItems(string lang)
         {
-            return await _context.Pokedices.ToListAsync();
+            var query = from p in _context.Pokedices
+                          join t in _context.Types on p.Type0 equals t.Id
+                          join t2 in _context.Types on p.Type1 equals t2.Id
+                          select new
+                          {
+                              name = p.Namefrench,
+                              type0 = t.French,
+                              type1 = t2.French
+                          };
+            if (lang.Equals("english"))
+            {
+                query = from p in _context.Pokedices
+                            join t in _context.Types on p.Type0 equals t.Id
+                            join t2 in _context.Types on p.Type1 equals t2.Id
+                            select new
+                            {
+                                name = p.Nameenglish,
+                                type0 = t.English,
+                                type1 = t2.English
+                            };
+            }
+            else if (lang.Equals("chinese"))
+            {
+                query = from p in _context.Pokedices
+                        join t in _context.Types on p.Type0 equals t.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        select new
+                        {
+                            name = p.Namechinese,
+                            type0 = t.Chinese,
+                            type1 = t2.Chinese
+                        };
+            }
+            else if (lang.Equals("japanese"))
+            {
+                query = from p in _context.Pokedices
+                        join t in _context.Types on p.Type0 equals t.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        select new
+                        {
+                            name = p.Namejapanese,
+                            type0 = t.Japanese,
+                            type1 = t2.Japanese
+                        };
+            }
+          
+            return await query.ToListAsync();
         }
 
+       
         // GET: Pokedexes/Details/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Pokedex>> GetTodoItem(int? id)

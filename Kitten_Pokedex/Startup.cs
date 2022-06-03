@@ -29,11 +29,11 @@ namespace Kitten_Pokedex
         {
             var connectionString = "Server=51.77.156.169;User=wpuser;Password=motdepasse;Database=pokemons";
 
-        //    var serverVersion = new MariaDbServerVersion(new Version(10, 1, 45));
+            var serverVersion = new MariaDbServerVersion(new Version(10, 1, 45));
 
-           // services.AddDbContext<pokemonsContext>(
-            //    DbContextOptions => DbContextOptions
-               //     .UseMySql(connectionString, serverVersion));
+            services.AddDbContext<pokemonsContext>(
+               DbContextOptions => DbContextOptions
+                   .UseMySql(connectionString, serverVersion));
 
 
             services.AddControllers();

@@ -9,7 +9,7 @@ using Kitten_Pokedex;
 
 namespace Kitten_Pokedex.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("pokemons")]
     [ApiController]
     public class PokedexesController : Controller
     {

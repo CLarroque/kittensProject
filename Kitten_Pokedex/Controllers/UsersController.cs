@@ -9,7 +9,7 @@ using Kitten_Pokedex;
 
 namespace Kitten_Pokedex.Controllers
 {
-    [Route("user/[controller]")]
+    [Route("users")]
     [ApiController]
     public class UsersController : Controller
     {
@@ -21,9 +21,10 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetTodoItems()
         {
-            return View(await _context.Users.ToListAsync());
+            return await _context.Users.ToListAsync();
         }
 
         // GET: Users/Details/5

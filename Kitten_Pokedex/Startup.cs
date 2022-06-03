@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace Kitten_Pokedex
 {
@@ -35,6 +36,10 @@ namespace Kitten_Pokedex
                DbContextOptions => DbContextOptions
                     .UseMySql(connectionString, serverVersion));
 
+            services.AddSwaggerGen(c =>
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ma super API", Version = "v1" })
+    );
+
 
             services.AddControllers();
         }
@@ -44,10 +49,6 @@ namespace Kitten_Pokedex
         {
             if (env.IsDevelopment())
             {
-              
-
-                
-                
                 app.UseDeveloperExceptionPage();
             }
 
@@ -60,6 +61,14 @@ namespace Kitten_Pokedex
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ma super API V1");
+                c.RoutePrefix = string.Empty;
             });
         }
     }

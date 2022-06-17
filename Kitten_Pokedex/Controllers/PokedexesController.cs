@@ -26,13 +26,14 @@ namespace Kitten_Pokedex.Controllers
         {
             var query = from p in _context.Pokedices
                         join t in _context.Types on p.Type0 equals t.Id
-                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id into ct2
+                        from t2 in ct2.DefaultIfEmpty()
                         select new
                         {
                               id = p.Id,
                               name = p.Namefrench,
                               type0 = t.French,
-                              type1 = t2.French,
+                              type1 = t2.French == null ? "null" : t2.French,
                               baseHP = p.BaseHp,
                               baseAttack = p.BaseAttack,
                               baseDefense = p.BaseDefense,
@@ -44,7 +45,8 @@ namespace Kitten_Pokedex.Controllers
             {
                 query = from p in _context.Pokedices
                             join t in _context.Types on p.Type0 equals t.Id
-                            join t2 in _context.Types on p.Type1 equals t2.Id
+                            join t2 in _context.Types on p.Type1 equals t2.Id into ct2
+                            from t2 in ct2.DefaultIfEmpty()
                             select new
                             {
                                 id = p.Id,
@@ -63,7 +65,8 @@ namespace Kitten_Pokedex.Controllers
             {
                 query = from p in _context.Pokedices
                         join t in _context.Types on p.Type0 equals t.Id
-                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id into ct2
+                        from t2 in ct2.DefaultIfEmpty()
                         select new
                         {
                             id = p.Id,
@@ -82,7 +85,8 @@ namespace Kitten_Pokedex.Controllers
             {
                 query = from p in _context.Pokedices
                         join t in _context.Types on p.Type0 equals t.Id
-                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id into ct2
+                        from t2 in ct2.DefaultIfEmpty()
                         select new
                         {
                             id = p.Id,
@@ -101,14 +105,7 @@ namespace Kitten_Pokedex.Controllers
             return await query.ToListAsync();
         }
 
-       
-        // GET: Pokedexes/Details/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<int>> GetTodoItem(int? id)
-        {
-            return id;
-           
-        }
+     
 
         // GET: Pokedexes/Create
         [HttpPost]

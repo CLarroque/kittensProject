@@ -48,7 +48,7 @@ namespace Kitten_Pokedex
 
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
-                builder.WithOrigins("http://pokedex.com").AllowAnyMethod().AllowAnyHeader();
+                builder.WithOrigins("https://localhost:5001").AllowAnyMethod().AllowAnyHeader();
             }));
 
         }

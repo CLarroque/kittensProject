@@ -25,10 +25,11 @@ namespace Kitten_Pokedex.Controllers
         public async Task<Object> GetTodoItems(string lang)
         {
             var query = from p in _context.Pokedices
-                          join t in _context.Types on p.Type0 equals t.Id
-                          join t2 in _context.Types on p.Type1 equals t2.Id
-                          select new
-                          {
+                        join t in _context.Types on p.Type0 equals t.Id
+                        join t2 in _context.Types on p.Type1 equals t2.Id
+                        select new
+                        {
+                              id = p.Id,
                               name = p.Namefrench,
                               type0 = t.French,
                               type1 = t2.French,
@@ -46,6 +47,7 @@ namespace Kitten_Pokedex.Controllers
                             join t2 in _context.Types on p.Type1 equals t2.Id
                             select new
                             {
+                                id = p.Id,
                                 name = p.Nameenglish,
                                 type0 = t.English,
                                 type1 = t2.English,
@@ -64,6 +66,7 @@ namespace Kitten_Pokedex.Controllers
                         join t2 in _context.Types on p.Type1 equals t2.Id
                         select new
                         {
+                            id = p.Id,
                             name = p.Namechinese,
                             type0 = t.Chinese,
                             type1 = t2.Chinese,
@@ -82,6 +85,7 @@ namespace Kitten_Pokedex.Controllers
                         join t2 in _context.Types on p.Type1 equals t2.Id
                         select new
                         {
+                            id = p.Id,
                             name = p.Namejapanese,
                             type0 = t.Japanese,
                             type1 = t2.Japanese,
@@ -100,16 +104,10 @@ namespace Kitten_Pokedex.Controllers
        
         // GET: Pokedexes/Details/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Pokedex>> GetTodoItem(int? id)
+        public async Task<ActionResult<int>> GetTodoItem(int? id)
         {
-            var todoItem = await _context.Pokedices.FindAsync(id);
-
-            if(todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return todoItem;
+            return id;
+           
         }
 
         // GET: Pokedexes/Create

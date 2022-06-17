@@ -16,11 +16,14 @@ using Microsoft.OpenApi.Models;
 
 namespace Kitten_Pokedex
 {
+
     public class Startup
     {
+      
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -42,6 +45,12 @@ namespace Kitten_Pokedex
 
 
             services.AddControllers();
+
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://pokedex.com").AllowAnyMethod().AllowAnyHeader();
+            }));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +60,13 @@ namespace Kitten_Pokedex
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder
+             .AllowAnyOrigin()
+              .AllowAnyMethod()
+             .AllowAnyHeader());
+
+            app.UseCors("ApiCorsPolicy");
 
             app.UseHttpsRedirection();
 
@@ -70,6 +86,9 @@ namespace Kitten_Pokedex
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ma super API V1");
                 c.RoutePrefix = string.Empty;
             });
+
+           
+
         }
     }
 }

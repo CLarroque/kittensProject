@@ -50,17 +50,16 @@ namespace Kitten_Pokedex.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost("{register}")]
         public async Task<IActionResult> Create([Bind("Id,Name,Password,Killed,Death")] User user)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
+            user.Killed = 0;
+            user.Death = 0;
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            return CreatedAtAction(nameof(Details), new { id = user.Id }, user);
         }
 
         // POST: Users/Edit/5

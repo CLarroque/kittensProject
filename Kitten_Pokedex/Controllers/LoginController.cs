@@ -41,6 +41,9 @@ namespace Kitten_Pokedex.Controllers
             return NotFound("User not found");
         }
 
+      
+
+
         private string Generate(User user)
         {
             var securityKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_config["Jwt:Key"]));

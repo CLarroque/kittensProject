@@ -9,6 +9,8 @@ using Kitten_Pokedex;
 
 namespace Kitten_Pokedex.Controllers
 {
+    [Route("equipe")]
+    [ApiController]
     public class PokemonsUsersController : Controller
     {
         private readonly pokemonsContext _context;
@@ -26,24 +28,20 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("{id}")]
+        public async Task<Object> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var pokemonsUser = await _context.PokemonsUsers
-                .Include(p => p.IdItemNavigation)
-                .Include(p => p.IdPokemonNavigation)
-                .Include(p => p.IdUserNavigation)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (pokemonsUser == null)
-            {
-                return NotFound();
-            }
+            var querytest = _context.Pokedices
+                .Where(x => _context.PokemonsUsers.Where(y => y.IdUser == id && y.IdPokemon == x.Id).Select(x => x).ToArray().Length > 0)
+                .Select(x => x)
+                .ToListAsync();
 
-            return View(pokemonsUser);
+         
+
+
+        
+            return await querytest;
         }
 
         // GET: PokemonsUsers/Create

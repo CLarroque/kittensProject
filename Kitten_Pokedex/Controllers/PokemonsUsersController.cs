@@ -65,7 +65,7 @@ namespace Kitten_Pokedex.Controllers
         {
             if(pokemonsUser.Slot < 1 || pokemonsUser.Slot > 6)
             {
-                return NotFound();
+                 return NotFound();
             }
 
             _context.PokemonsUsers.Add(pokemonsUser);

@@ -20,14 +20,8 @@ namespace Kitten_Pokedex.Controllers
             _context = context;
         }
 
-        // GET: PokemonsUsers
-        public async Task<IActionResult> Index()
-        {
-            var pokemonsContext = _context.PokemonsUsers.Include(p => p.IdItemNavigation).Include(p => p.IdPokemonNavigation).Include(p => p.IdUserNavigation);
-            return View(await pokemonsContext.ToListAsync());
-        }
-
-        public async Task<ActionResult<PokemonsUser>> GetEquipe(long id)
+        [HttpGet("Equipe/{id}")]
+        public async Task<ActionResult<PokemonsUser>> GetEquipe(int id)
         {
             var pokemon = await _context.PokemonsUsers.FindAsync(id);
 
@@ -39,8 +33,7 @@ namespace Kitten_Pokedex.Controllers
             return pokemon;
         }
 
-        // GET: PokemonsUsers/Details/5
-        [HttpGet("{id}")]
+        [HttpGet("Details/{id}")]
         public async Task<Object> Details(int? id)
         {
 
@@ -57,10 +50,7 @@ namespace Kitten_Pokedex.Controllers
             return await query.ToListAsync();
         }
 
-        // POST: PokemonsUsers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<ActionResult<PokemonsUser>> Create([Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
             if(pokemonsUser.Slot < 1 || pokemonsUser.Slot > 6)
@@ -68,17 +58,18 @@ namespace Kitten_Pokedex.Controllers
                  return NotFound();
             }
 
+            if(_context.PokemonsUsers.Any(x => x.Slot == pokemonsUser.Slot && x.IdUser == pokemonsUser.IdUser))
+            {
+                return NotFound();
+            }
+
             _context.PokemonsUsers.Add(pokemonsUser);
             await _context.SaveChangesAsync();
 
-            //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
             return CreatedAtAction(nameof(GetEquipe), new { id = pokemonsUser.Id }, pokemonsUser);
         }
 
-        // POST: PokemonsUsers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("{id}")]
+        [HttpPost("Edit/{id}")]
         public async Task<ActionResult<PokemonsUser>> Edit(int id, [Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
 

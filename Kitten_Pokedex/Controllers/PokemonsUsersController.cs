@@ -21,6 +21,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var pokemonsContext = _context.PokemonsUsers.Include(p => p.IdItemNavigation).Include(p => p.IdPokemonNavigation).Include(p => p.IdUserNavigation);
@@ -28,7 +29,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers/Details/5
-        [HttpGet("{id}")]
+        [HttpGet("Details/{id}")]
         public async Task<Object> Details(int? id)
         {
 
@@ -45,6 +46,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers/Create
+        [HttpGet("Create")]
         public IActionResult Create()
         {
             ViewData["IdItem"] = new SelectList(_context.Items, "Id", "Nameenglish");
@@ -56,7 +58,7 @@ namespace Kitten_Pokedex.Controllers
         // POST: PokemonsUsers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Create"), ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
@@ -73,6 +75,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers/Edit/5
+        [HttpGet("Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -94,7 +97,7 @@ namespace Kitten_Pokedex.Controllers
         // POST: PokemonsUsers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("Edit"), ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
@@ -130,6 +133,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // GET: PokemonsUsers/Delete/5
+        [HttpGet("Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,7 +155,7 @@ namespace Kitten_Pokedex.Controllers
         }
 
         // POST: PokemonsUsers/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("Delete"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

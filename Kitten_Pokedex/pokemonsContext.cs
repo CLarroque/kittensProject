@@ -27,7 +27,7 @@ namespace Kitten_Pokedex
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=51.77.156.169;user=wpuser;password=motdepasse;database=pokemons", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.1.45-mariadb"));
+                optionsBuilder.UseMySql("Server=51.77.156.169;User=remote-user;Password=?GzmyKt?xRgD!LQ8GGqxqKMR3ncs;Database=pokemons", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8-0-29-mysql"));
             }
         }
 

@@ -27,139 +27,81 @@ namespace Kitten_Pokedex.Controllers
             return View(await pokemonsContext.ToListAsync());
         }
 
+        public async Task<ActionResult<PokemonsUser>> GetEquipe(long id)
+        {
+            var pokemon = await _context.PokemonsUsers.FindAsync(id);
+
+            if (pokemon == null)
+            {
+                return NotFound();
+            }
+
+            return pokemon;
+        }
+
         // GET: PokemonsUsers/Details/5
         [HttpGet("{id}")]
         public async Task<Object> Details(int? id)
         {
 
-            var querytest = _context.Pokedices
-                .Where(x => _context.PokemonsUsers.Where(y => y.IdUser == id && y.IdPokemon == x.Id).Select(x => x).ToArray().Length > 0)
-                .Select(x => x)
-                .ToListAsync();
+            var query = from p in _context.Pokedices
+                        join pu in _context.PokemonsUsers on p.Id equals pu.IdPokemon
+                        where pu.IdUser == id
+                        select new
+                        {
+                            id = pu.Id,
+                            name = p.Nameenglish,
+                            slot = pu.Slot
+                        };
 
-         
-
-
-        
-            return await querytest;
-        }
-
-        // GET: PokemonsUsers/Create
-        public IActionResult Create()
-        {
-            ViewData["IdItem"] = new SelectList(_context.Items, "Id", "Nameenglish");
-            ViewData["IdPokemon"] = new SelectList(_context.Pokedices, "Id", "Namechinese");
-            ViewData["IdUser"] = new SelectList(_context.Users, "Id", "Name");
-            return View();
+            return await query.ToListAsync();
         }
 
         // POST: PokemonsUsers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
+        public async Task<ActionResult<PokemonsUser>> Create([Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(pokemonsUser);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["IdItem"] = new SelectList(_context.Items, "Id", "Nameenglish", pokemonsUser.IdItem);
-            ViewData["IdPokemon"] = new SelectList(_context.Pokedices, "Id", "Namechinese", pokemonsUser.IdPokemon);
-            ViewData["IdUser"] = new SelectList(_context.Users, "Id", "Name", pokemonsUser.IdUser);
-            return View(pokemonsUser);
-        }
-
-        // GET: PokemonsUsers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
+            if(pokemonsUser.Slot < 1 || pokemonsUser.Slot > 6)
             {
                 return NotFound();
             }
 
-            var pokemonsUser = await _context.PokemonsUsers.FindAsync(id);
-            if (pokemonsUser == null)
-            {
-                return NotFound();
-            }
-            ViewData["IdItem"] = new SelectList(_context.Items, "Id", "Nameenglish", pokemonsUser.IdItem);
-            ViewData["IdPokemon"] = new SelectList(_context.Pokedices, "Id", "Namechinese", pokemonsUser.IdPokemon);
-            ViewData["IdUser"] = new SelectList(_context.Users, "Id", "Name", pokemonsUser.IdUser);
-            return View(pokemonsUser);
+            _context.PokemonsUsers.Add(pokemonsUser);
+            await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            return CreatedAtAction(nameof(GetEquipe), new { id = pokemonsUser.Id }, pokemonsUser);
         }
 
         // POST: PokemonsUsers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<PokemonsUser>> Edit(int id, [Bind("Id,IdUser,IdPokemon,Slot,IdItem")] PokemonsUser pokemonsUser)
         {
-            if (id != pokemonsUser.Id)
+
+            var pokemon = await _context.PokemonsUsers.FindAsync(id);
+            if(pokemon == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(pokemonsUser);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PokemonsUserExists(pokemonsUser.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["IdItem"] = new SelectList(_context.Items, "Id", "Nameenglish", pokemonsUser.IdItem);
-            ViewData["IdPokemon"] = new SelectList(_context.Pokedices, "Id", "Namechinese", pokemonsUser.IdPokemon);
-            ViewData["IdUser"] = new SelectList(_context.Users, "Id", "Name", pokemonsUser.IdUser);
-            return View(pokemonsUser);
-        }
+            pokemon.IdPokemon = pokemonsUser.IdPokemon;
 
-        // GET: PokemonsUsers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException) when (!PokemonsUserExists(id))
             {
                 return NotFound();
             }
 
-            var pokemonsUser = await _context.PokemonsUsers
-                .Include(p => p.IdItemNavigation)
-                .Include(p => p.IdPokemonNavigation)
-                .Include(p => p.IdUserNavigation)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (pokemonsUser == null)
-            {
-                return NotFound();
-            }
-
-            return View(pokemonsUser);
+            return pokemon;
         }
-
-        // POST: PokemonsUsers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var pokemonsUser = await _context.PokemonsUsers.FindAsync(id);
-            _context.PokemonsUsers.Remove(pokemonsUser);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+     
 
         private bool PokemonsUserExists(int id)
         {

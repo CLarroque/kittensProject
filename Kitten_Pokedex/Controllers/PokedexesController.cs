@@ -105,50 +105,6 @@ namespace Kitten_Pokedex.Controllers
             return await query.ToListAsync();
         }
 
-     
-
-        // GET: Pokedexes/Create
-        [HttpPost]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Pokedexes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost("{id}")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nameenglish,Namejapanese,Namechinese,Namefrench,Type0,Type1,BaseHp,BaseAttack,BaseDefense,BaseSpAttack,BaseSpDefense,BaseSpeed")] Pokedex pokedex)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(pokedex);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(pokedex);
-        }
-
-
-        // GET: Pokedexes/Delete/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pokedex = await _context.Pokedices
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (pokedex == null)
-            {
-                return NotFound();
-            }
-
-            return View(pokedex);
-        }
 
         private bool PokedexExists(int id)
         {

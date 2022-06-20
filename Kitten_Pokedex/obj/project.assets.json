@@ -9676,19 +9676,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abourrel\\.nuget\\packages\\": {}
+    "C:\\Users\\Adrien\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+      "projectUniqueName": "C:\\Users\\Adrien\\Desktop\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
       "projectName": "Kitten_Pokedex",
-      "projectPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
-      "packagesPath": "C:\\Users\\abourrel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\abourrel\\Desktop\\IPI\\C#\\back\\kittensProject\\Kitten_Pokedex\\obj\\",
+      "projectPath": "C:\\Users\\Adrien\\Desktop\\back\\kittensProject\\Kitten_Pokedex\\Kitten_Pokedex.csproj",
+      "packagesPath": "C:\\Users\\Adrien\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Adrien\\Desktop\\back\\kittensProject\\Kitten_Pokedex\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\abourrel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Adrien\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9769,6 +9769,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.22, 3.1.22]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9777,7 +9787,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

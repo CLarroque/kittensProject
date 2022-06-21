@@ -43,7 +43,7 @@ namespace Kitten_Pokedex.Controllers
                         select new
                         {
                             id = pu.Id,
-                            name = p.Nameenglish,
+                            name = p.Namefrench,
                             slot = pu.Slot
                         };
 

@@ -26,7 +26,6 @@ namespace Kitten_Pokedex.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody] UserLogin userLogin)
         {

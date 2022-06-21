@@ -30,12 +30,12 @@ namespace Kitten_Pokedex.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] UserLogin userLogin)
         {
-            var user = Authenticate(userLogin);
+            dynamic user = Authenticate(userLogin);
 
             if (user != null)
             {
                 var token = Generate(user);
-                return Ok(token);
+                return Ok(new { user, token });
             }
 
             return NotFound("User not found");

@@ -46,10 +46,13 @@ namespace Kitten_Pokedex
 
             services.AddControllers();
 
-            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
-            {
-                builder.WithOrigins("https://localhost:5001").AllowAnyMethod().AllowAnyHeader();
-            }));
+            services.AddCors(o => o.AddPolicy("AllowAnyOrigin",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyMethod()
+                                 .AllowAnyHeader();
+                      }));
 
         }
 
@@ -66,7 +69,7 @@ namespace Kitten_Pokedex
               .AllowAnyMethod()
              .AllowAnyHeader());
 
-            app.UseCors("ApiCorsPolicy");
+            app.UseCors("AllowAnyOrigin");
 
             app.UseHttpsRedirection();
 

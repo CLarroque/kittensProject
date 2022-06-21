@@ -40,8 +40,6 @@ namespace Kitten_Pokedex.Controllers
             return NotFound("User not found");
         }
 
-      
-
 
         private string Generate(User user)
         {

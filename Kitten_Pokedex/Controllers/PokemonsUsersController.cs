@@ -44,7 +44,8 @@ namespace Kitten_Pokedex.Controllers
                         {
                             id = pu.Id,
                             name = p.Namefrench,
-                            slot = pu.Slot
+                            slot = pu.Slot,
+                            idPokemon = p.Id
                         };
 
             return await query.ToListAsync();

@@ -27,10 +27,10 @@ namespace Kitten_Pokedex.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login([FromBody] UserLogin userLogin)
+        public IActionResult Login([Bind("Username,Password")] UserLogin userLogin)
         {
-            dynamic user = Authenticate(userLogin);
-
+            Console.WriteLine(userLogin.Username);
+            var user = Authenticate(userLogin);
             if (user != null)
             {
                 var token = Generate(user);
@@ -62,8 +62,8 @@ namespace Kitten_Pokedex.Controllers
 
         private User Authenticate(UserLogin userLogin)
         {
+          
             var currentUser = _context.Users.FirstOrDefault(o => o.Name.ToLower() == userLogin.Username.ToLower() && o.Password == userLogin.Password);
-
             if (currentUser != null)
             {
                 return currentUser;
